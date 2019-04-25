@@ -1,7 +1,7 @@
 {
-  "name": "api-bootstrap",
+  "name": "domain-tracker-api",
   "version": "0.0.1",
-  "description": "API bootstrap used for my micro-services",
+  "description": "Domain tracker used to track my domains across registrars",
   "main": "api.js",
   "scripts": {
     "lab": "lab -C",
@@ -13,18 +13,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://github.com/iRomain/api-bootstrap.git"
+    "url": "git+ssh://github.com/iRomain/domain-tracker-api.git"
   },
   "keywords": [
-    "bootstrap",
-    "api",
+    "domain name",
+    "registrar",
     "microservice",
     "hapi"
   ],
   "author": "Romain Barissat",
   "license": "MIT",
-  "homepage": "https://github.com/iRomain/api-bootstrap#readme",
-  "bugs": "https://github.com/iRomain/api-bootstrap/issues",
+  "homepage": "https://github.com/iRomain/domain-tracker-api#readme",
+  "bugs": "https://github.com/iRomain/domain-tracker-api/issues",
   "engines": {
     "node": "latest"
   },

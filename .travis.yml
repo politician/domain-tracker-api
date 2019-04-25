@@ -9,16 +9,16 @@ before_script:
 after_script:
 - codeclimate-test-reporter < lcov.info
 before_install:
-- docker build -t iromain/api-bootstrap .
+- docker build -t iromain/domain-tracker-api .
 - echo $DOCKER_PASSWORD | docker login --username="$DOCKER_USERNAME" --password-stdin
-- docker push iromain/api-bootstrap
+- docker push iromain/domain-tracker-api
 deploy:
   provider: heroku
   api_key:
     secure: gq0EZf+awlwlZbnOg6tR+Xax758QY6BU6kWXkTsd+xcsBZkOnA0ZyVFezza6u72YYvcs18fUZNlPhv3YgK0J4V+3Q2YU56JkFPDVu4udsf+NiEubNeKJgYIZGLR0Ts3PyALZwEorVYkD7kv2Y+amr8k1tRMf+xNb8PeuhRQTYkqLolZRXivQ6IfLAXHbR3FM7HNE+oxHnuWgTnHY9dYYY39BD4wfICARKEL+TuuZ7KWlYEhasSZfbm67YR+lnjflr96d785kBFmOQcWR50fCwaaXP/DcMfJq2rJWPAtZQX9t/4nseRhy7HwUiMowopUCttCK6T3RFbyA7YySScQXJOTxcqA9F8MNnRFmW4rWTARMKkJpBuQLSYnh9u+q9p+aMRDWo5Daw4Rc7bIlyraOg7ijifv+L6ztBsh7sXbxpOa02G69fq2YuAJMYqvrJaumFB8h2kyYuoAAfBkBpAXxLdztma1c3i4lzJTMjMQ941+I5SlpMLQs2wHhD3ydt6DBqkogLgUnkudsITcUPZE5fAAA9gfHr1qFPSsLebXpYb66787Sn9wgfz45xd+TmSB0SRm93FEE40Bd2ECXy/DzKwaIDVzwdg34hkGLfnAiUuOQcB/0hdnDdT7cZPVDmvHm8L4F+1tKmPWKTrQGYP+63HoesNG0De5Qmaj4gMWlRlA=
-  app: api-bootstrap
+  app: domain-tracker-api
   on:
-    repo: iRomain/api-bootstrap
+    repo: iRomain/domain-tracker-api
 cache:
   directories:
   - node_modules
@@ -31,4 +31,4 @@ env:
 addons:
   code_climate:
     repo_token:
-      secure: G/8d392Ccqby6+lf5gJx+z0EKTvSriMr3HnVkxJWwq4tH3w0/iQCslA7mF7ij1xyFUY7V4tT8CDQoP90wiwRNZwM4/jBpwojAR4wM1RVtdcjcoI638F6F7nGdaqYSHg8DVLUHYJKGToSUEd7qNw5NiEkt9Di4n+LA0egyactqfcxfbNM0npXih22OK1swsQ3r8cYznHRDKXyYAcPKI81xaqtaxC+a+pYynIokLYwPyJiEB9e2AmOoZBN4BA6lzag9xKJ7r7wA9G3KRJ69RGXO4J3sAwFPNiOcUSCURyWRbo/STvV84cSD4H283fTvy3yyFxxQQuxQMyJx9ClzpHiA10KB2iM0gwWhzAd4J4hYThtbHL/+1Gdp0UaSypY2sRa0F7haUsD/XptAVK20Jp7B9olZD7vp4H2wRneVYDwhZrvmp1R3K2mlNe7ogNi0Y01rIX3bCCX7v1C+d0XhD5mGJUDxBTkpneG9Q7U34N9hydCIqIL2BxAw0QCidp+2SICOVqWpCVtxqXtSt9otnb3/cCgTP6loqFUtCepFUBPpyiVSTWUr3Kll2M+doc+qpNIyOpajmDdu00fvH2w+t9WfF1e5/5jxrsaCvr6WxDB/G4UIY4PUsjyPaiVZ2yGaOS4H4kourIRaFQbrcuf6HFqhGb9oJytYinrG68g1SvkXTQ=
+      secure: YIq1sGezTWTNkSgO8XdOxk4d6Q4TUsErCimSUV+ouZ4od5V37ciQBEk8s9Zgp07bDlnu+z4h1q9UBWKq9HXBRyjGPqHjHMuxtH0UWj3/EyCm+BXuHFYHM4b5mImo8yubwFaqgmqAvNbm9/1OOLbe5KhyT1KpEnrQK0qzNCJR7ezIPoymTdgl8/HOsmDbfR/5BoVxiCaDOMdVBYgLQyeuIp8n7mecTqxfZuaY0WQb4uHWViToXLT1MC0Q26Nu4l48tUeFSkgOIAJUq/S4uVDE9FQ7oTvGkCmPm+4csoIRhaZXlwNIEQsfgAM4u4QwF0OY3d2aC0db06cqSHPXsdFzD3N8V8aNjOxllEKn/m9LLmrbRRj+n3n9+bPtVuBcRog4CrZcrBJCT/eY0Qya604gwFNTSBw1r7ybX3WXVNIJv9LMrM0MPFUyZO3Hk4bYxpQ9vLnP7vzC4s4uAb7OIt9R2rhLTjn7zLOi4NIWqfxHxvHoI3idyphM4XB7Wa8EQApFspT0Gom0wNirtp+ViplvQ1kQ0UNqHpp2s3peyntwLvo1tcQRiz8E6dyoMiBHG4geV3s+3ISCyuCColyIbFimqnKz1oShmvSWgnZyY1X7EkHg1quafV0b/LGM1gHTKEsoCXCWMDdNXIrQ+dxxc22rgkWdIOXfEoGXlskLZATWvkI=

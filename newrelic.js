@@ -9,7 +9,7 @@ exports.config = {
    * Array of application names.
    * api-bootstrap refers to the name of the New Relic app
    */
-  app_name: ['api-bootstrap'],
+  app_name: ['domain-tracker-api'],
   /**
    * Your New Relic license key.
    */
