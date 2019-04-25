@@ -94,7 +94,7 @@ This API is compatible with [Heroku](http://keroku.com) through the [Travis/Hero
 
 > 1. Change your `deploy.app` name
 > 2. Change your `deploy.api_key`
-> Tip: Use [Travis to encrypt](http://docs.travis-ci.com/user/encryption-keys/) your api key with `travis encrypt <api key>`
+> Tip: Use [Travis to encrypt](http://docs.travis-ci.com/user/encryption-keys/) your api key with `travis encrypt <api key> --add deploy.api_key`
 
 > Push to GitHub:
 
@@ -109,7 +109,7 @@ A [Docker image](https://hub.docker.com/r/iromain/domain-tracker-api/) is automa
 > Change the Docker image build configuration in [.travis.yml](.travis.yml):
 
 > 1. Change your image repo in `before_install` for both the build and push commands
-> 2. Change your [encrypted](http://docs.travis-ci.com/user/encryption-keys/) docker email, username, password in `env`
+> 2. Change your [encrypted](http://docs.travis-ci.com/user/encryption-keys/) docker password with `travis encrypt DOCKER_PASSWORD="<docker password>" --add`
 
 
 New Relic monitoring
