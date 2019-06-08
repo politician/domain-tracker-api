@@ -4,7 +4,7 @@ node_js:
 services:
 - docker
 before_script:
-- npm install -g lab
+- npm install -g @hapi/lab
 - npm install -g codeclimate-test-reporter
 after_script:
 - codeclimate-test-reporter < lcov.info
