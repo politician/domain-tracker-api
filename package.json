@@ -9,7 +9,7 @@
     "fix": "standard --fix",
     "dev-start": "npm run fix && npm run lint && npm run lab && NODE_ENV=dev node api.js",
     "start": "node api.js",
-    "test": "npm run lint && npm run lab && lab -r lcov > lcov.info"
+    "test": "npm run lint && npm run lab && lab -C -I '__core-js_shared__,core,CSS' -r lcov > lcov.info"
   },
   "repository": {
     "type": "git",
