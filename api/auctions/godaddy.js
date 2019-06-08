@@ -7,14 +7,14 @@ exports.plugin = {
   version: '1.0.0',
   register: async function (server, options) {
     server.route({
-      method: 'POST',
-      path: '/auctions/godaddy',
+      method: 'GET',
+      path: '/auctions/godaddy/{username}/{password}/{domain}/{bid}',
       config: {
         tags: ['api', 'auction', 'godaddy'],
         description: 'GoDaddy bidder',
         notes: 'Bid on a godaddy.com expired domain',
         validate: {
-          payload: {
+          params: {
             username: Joi.string().required().default('96217004'),
             password: Joi.string().required().default('GhcrQ87jgfeQiVCt4gVD7ugMB78jV2FV5fvo'),
             domain: Joi.string().required().default('sharenow-com-288171942'),
@@ -36,52 +36,52 @@ exports.plugin = {
           // await page.goto('https://sso.godaddy.com/?realm=idp&app=auctions&path=/');
           await retry(() => page.goto('https://sso.godaddy.com/?realm=idp&app=auctions&path=/'))
           await page.waitForSelector('#username')
-          await page.type('#username', req.payload.username)
-          await page.type('#password', req.payload.password)
+          await page.type('#username', req.params.username)
+          await page.type('#password', req.params.password)
           await page.click('#submitBtn')
           await page.waitForSelector('#tdAuctionLogoAuctions')
 
-          // await page.goto('https://www.godaddy.com/domain-auctions/' + req.payload.domain);
-          await retry(() => page.goto('https://godaddy.com/domain-auctions/' + req.payload.domain))
+          // await page.goto('https://www.godaddy.com/domain-auctions/' + req.params.domain);
+          await retry(() => page.goto('https://godaddy.com/domain-auctions/' + req.params.domain))
           await page.waitForSelector('#bidAmount')
 
           // Read the current price before continuing
           let price = await page.$eval('#bidAmount', el => el.value)
           price = Number(price.replace(/,/g, ''))
 
-          if (price <= req.payload.bid) {
+          if (price <= req.params.bid) {
             console.log('Price at ' + price)
 
             // Make sure we don't append a price!
             const bidPrice = await page.$('#bidAmount')
             await bidPrice.click({ clickCount: 3 })
 
-            await bidPrice.type(req.payload.bid)
+            await bidPrice.type(req.params.bid)
             await page.click('#place_bid')
 
             // Wait for confirmation popup
             await page.waitForSelector('#confirm_bid')
 
-            // await page.screenshot({ path: req.payload.domain + '_bid-ready.png' })
+            // await page.screenshot({ path: req.params.domain + '_bid-ready.png' })
 
             await page.click('#confirm_bid')
 
             await page.waitFor(4000)
 
-            console.log('Successful bid at ' + req.payload.bid)
+            console.log('Successful bid at ' + req.params.bid)
 
-            // await page.screenshot({ path: req.payload.domain + '_bid-complete.png' })
+            // await page.screenshot({ path: req.params.domain + '_bid-complete.png' })
 
             await browser.close()
 
             return {
               statusCode: 200,
               statusText: 'Success',
-              message: 'Successful bid at ' + req.payload.bid
+              message: 'Successful bid at ' + req.params.bid
             }
           } else {
             console.log('The price is already at ' + price)
-            // await page.screenshot({ path: req.payload.domain + '_bid-aborted.png' })
+            // await page.screenshot({ path: req.params.domain + '_bid-aborted.png' })
             await browser.close()
             return {
               statusCode: 200,
