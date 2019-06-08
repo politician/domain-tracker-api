@@ -31,6 +31,9 @@ const options = {
     }, {
       'name': 'users',
       'description': 'Access user data'
+    }, {
+      'name': 'auctions',
+      'description': 'Bid on expired domain auctions'
     }
   ]
 }
@@ -43,7 +46,10 @@ const plugins = [
   require('./api/index'),
   require('./api/account/hello'),
   require('./api/account/goodbye'),
-  require('./api/users/list')
+  require('./api/users/list'),
+
+  require('./api/auctions/dropcatch')
+  
 ]
 
 const init = async () => {

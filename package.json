@@ -4,7 +4,7 @@
   "description": "Domain tracker used to track my domains across registrars",
   "main": "api.js",
   "scripts": {
-    "lab": "lab -C",
+    "lab": "lab -C -I '__core-js_shared__,core,CSS'",
     "lint": "standard --verbose | snazzy",
     "fix": "standard --fix",
     "dev-start": "npm run fix && npm run lint && npm run lab && NODE_ENV=dev node api.js",
@@ -36,7 +36,8 @@
     "@hapi/joi": "latest",
     "@hapi/inert": "latest",
     "@hapi/vision": "latest",
-    "newrelic": "latest"
+    "newrelic": "latest",
+    "puppeteer": "^1.17.0"
   },
   "devDependencies": {
     "@hapi/code": "latest",
