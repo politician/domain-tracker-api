@@ -1,5 +1,4 @@
 const puppeteer = require('puppeteer')
-
 var Joi = require('@hapi/joi')
 
 // Options can be passed to plugins on registration
@@ -64,13 +63,13 @@ exports.plugin = {
               // Make sure we don't append a price!
               await bidPriceConfirm.click({ clickCount: 3 })
               await bidPriceConfirm.type(req.payload.bid)
-              //await page.screenshot({ path: req.payload.domain + '_bid-ready.png' })
+              // await page.screenshot({ path: req.payload.domain + '_bid-ready.png' })
 
               await page.click('#popupContent > div > div.sub > div:nth-child(3) > div.submit.confirmBid.mb12 > a.cssbtn2')
 
               await page.waitForSelector('#popupContent > div > div.sub > div.text > div > table > tbody > tr > td.dom > b')
 
-              //await page.screenshot({ path: req.payload.domain + '_bid-complete.png' })
+              // await page.screenshot({ path: req.payload.domain + '_bid-complete.png' })
 
               await browser.close()
 
@@ -81,7 +80,7 @@ exports.plugin = {
               }
             } else {
               console.log('The price is already at ' + price)
-              //await page.screenshot({ path: req.payload.domain + '_bid-aborted.png' })
+              // await page.screenshot({ path: req.payload.domain + '_bid-aborted.png' })
               await browser.close()
               return {
                 statusCode: 200,
@@ -91,7 +90,7 @@ exports.plugin = {
             }
           } else {
             console.log('The price is already at ' + price)
-            //await page.screenshot({ path: req.payload.domain + '_bid-aborted.png' })
+            // await page.screenshot({ path: req.payload.domain + '_bid-aborted.png' })
             await browser.close()
             return {
               statusCode: 200,

@@ -48,8 +48,8 @@ const plugins = [
   require('./api/account/goodbye'),
   require('./api/users/list'),
 
-  require('./api/auctions/dropcatch')
-  
+  require('./api/auctions/dropcatch'),
+  require('./api/auctions/godaddy')
 ]
 
 const init = async () => {
