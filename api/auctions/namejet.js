@@ -32,14 +32,14 @@ exports.plugin = {
           })
           const page = await browser.newPage()
 
-          await page.goto('https://www.namejet.com/Pages/Login.aspx');
+          await page.goto('https://www.namejet.com/Pages/Login.aspx')
           await page.waitForSelector('#ctl00_ContentPlaceHolder1_txtUsername')
           await page.type('#ctl00_ContentPlaceHolder1_txtUsername', req.params.username)
           await page.type('#ctl00_ContentPlaceHolder1_txtPassword', req.params.password)
           await page.click('#ctl00_ContentPlaceHolder1_btnSubmit')
           await page.waitForSelector('#ctl00_ContentPlaceHolder1_MyAccountNav1_pnlAccountOwner')
 
-          await page.goto('https://www.namejet.com/Pages/Auctions/StandardDetails.aspx?lt=myauctions&auctionid=' + req.params.domain);
+          await page.goto('https://www.namejet.com/Pages/Auctions/StandardDetails.aspx?lt=myauctions&auctionid=' + req.params.domain)
           await page.waitForSelector('#ctl00_ContentPlaceHolder1_txtBidAmount')
 
           // Read the current price before continuing
