@@ -49,7 +49,8 @@ const plugins = [
   require('./api/users/list'),
 
   require('./api/auctions/dropcatch'),
-  require('./api/auctions/godaddy')
+  require('./api/auctions/godaddy'),
+  require('./api/auctions/namejet')
 ]
 
 const init = async () => {
