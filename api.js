@@ -34,6 +34,9 @@ const options = {
     }, {
       'name': 'auctions',
       'description': 'Bid on expired domain auctions'
+    }, {
+      'name': 'marketplaces',
+      'description': 'Sell your domains'
     }
   ]
 }
@@ -50,7 +53,9 @@ const plugins = [
 
   require('./api/auctions/dropcatch'),
   require('./api/auctions/godaddy'),
-  require('./api/auctions/namejet')
+  require('./api/auctions/namejet'),
+
+  require('./api/marketplaces/afternic')
 ]
 
 const init = async () => {
