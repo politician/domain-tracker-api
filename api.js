@@ -37,6 +37,9 @@ const options = {
     }, {
       'name': 'marketplaces',
       'description': 'Sell your domains'
+    }, {
+      'name': 'parking',
+      'description': 'Park your domains'
     }
   ]
 }
@@ -55,7 +58,8 @@ const plugins = [
   require('./api/auctions/godaddy'),
   require('./api/auctions/namejet'),
 
-  require('./api/marketplaces/afternic')
+  require('./api/marketplaces/afternic'),
+  require('./api/marketplaces/flippa')
 ]
 
 const init = async () => {
